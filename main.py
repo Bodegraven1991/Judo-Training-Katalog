@@ -1,5 +1,7 @@
 import pandas as pd
 
+import datetime
+
 kat_list = ['Aufwärmen', 'Reaktion', 'Spiel', 'Entspannung', 'Fallübung', 'Mut', 'Teamwork', 'Körperspannung', 'Körperverständnis', 'Wettkampf', 'Haltegriff', 'Randori']
 aufw_list = []
 reak_list = []
@@ -1851,8 +1853,11 @@ Wie ist der Titel der Übungsform?
 
             df = pd.DataFrame(data)
 
+            current_date = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+            current_date = current_date.replace(':', '_')
+
             # Specify the file path for the Excel file
-            excel_file_path = 'Trainingsplan Judo.xlsx'
+            excel_file_path = current_date + '_Trainingsplan Judo.xlsx'
 
             # Write the DataFrame to Excel
             df.to_excel(excel_file_path, index=False)
